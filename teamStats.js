@@ -10,11 +10,20 @@ const team  = {
         {opponent:"West-Ham",teamPoints:42,opponentPoints:17}
     ],
 
+    _injuries : [
+        {firstName:"Matt",lastName:"Doherty",age:25,duration: 'one month'},
+        
+    ],
+
     get players() {
         return this._players
     },
     get games() {
         return this._games
+    },
+
+    get injuries () {
+        return this._injuries
     },
 
     addPlayer(firstName,lastName,age) {
@@ -35,6 +44,16 @@ const team  = {
             opponentPoints:opponentPoints,
         };
         this.games.push(game)
+    },
+
+    addInjured(firstName,lastName,age,duration) {
+        let injured = {
+            firstName:firstName,
+            lastName:lastName,
+            age:age,
+            duration:duration
+        };
+        return this.injuries.push(injured)
     }
 }
 
@@ -47,3 +66,6 @@ team.addGames('Manchester United',42,33)
 team.addGames('Crystal Palace',42,29)
 console.log(team.games)
 
+
+team.addInjured('Dele','Alli',23,'two months')
+console.log(team.injuries)
